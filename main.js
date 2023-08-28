@@ -1,28 +1,22 @@
 // 6kyu, 7kyu, 8kyu
 // KATA 1 7kyu
-// https://www.codewars.com/kata/5a092d9e46d843b9db000064/train/javascript
-const solve = (arr) => {
-  const absCounts = new Map();
-  const result = [];
-  arr.forEach(num => {
-    const absNum = Math.abs(num);
-    absCounts.set(absNum, (absCounts.get(absNum) || 0) + 1);
-  });
-  arr.forEach(num => {
-    const absNum = Math.abs(num);
-    if (!absCounts.get(absNum) > 2 === 0) {
-      console.log(absCounts.get(absNum))
+// https://www.codewars.com/kata/57f6051c3ff02f3b7300008b/train/javascript
+const meeting = (x, need) => {
+  if (need <= 0) {return 'Game On'}
+  const avail = [];
+  for (const [ { length: chairs }, seated] of x) {
+    const taken = Math.min(Math.max(seated - chairs, 0), need);
+    avail.push(taken);
+    need -= taken;
+    if (need <= 0) {
+      return avail;
     }
-    if (absCounts.get(absNum) === 1) {
-      result.push(num);
-      absCounts.delete(absNum);
-    }
-  });
-  return +result.join('');
-}
-
-console.log(solve([1,-1,2,-2,3]));
-console.log(solve([-110,110,-38,-38,-62,62,-38,-38,-38]))
+  }
+  return 'Not enough!';
+};
+  
+console.log(meeting([['XXX', 3], ['XXXXX', 6], ['XXXXXX', 9]], 4));
+console.log(meeting([['XX', 2], ['XXXX', 6], ['XXXXX', 4]], 0));
 
 // KATA 2 7kyu
 // https://www.codewars.com/kata/57ecf6efc7fe13eb070000e1/train/javascript
