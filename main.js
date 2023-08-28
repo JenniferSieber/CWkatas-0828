@@ -8,9 +8,7 @@ const solve = (arr) => {
     const absNum = Math.abs(num);
     absCounts.set(absNum, (absCounts.get(absNum) || 0) + 1);
   });
-  console.log(absCounts)
   arr.forEach(num => {
-    
     const absNum = Math.abs(num);
     if (!absCounts.get(absNum) > 2 === 0) {
       console.log(absCounts.get(absNum))
@@ -52,9 +50,7 @@ const boredom = staff => {
     cleaning: 4,
     'pissing about': 25
   }
-
-  let score = Object.keys(staff).reduce((a,b) => a + deptScores[staff[b]], 0);
- 
+  let score = Object.keys(staff).reduce((a,b) => a + deptScores[staff[b]], 0); 
   return score <= 80 ? 'kill me now': score < 100 && score > 80 ? 'i can handle this' : 'party time!!';
 }
 
@@ -63,7 +59,7 @@ randy: 'canteen', sandy: 'change', andy: 'change', katie: 'IS',
 laura: 'change', saajid: 'IS', alex: 'trading', john: 'accounts',
 mr: 'finance' }));
 
-// KATA 4 8kyu
+// KATA 4 7kyu
 // https://www.codewars.com/kata/the-office-iii-broken-photocopier
 const broken = x => x.split('').map(el => el == '1' ? '0' : '1').join('');
 
